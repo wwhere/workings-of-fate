@@ -31,5 +31,17 @@ type 1
  "I am an [adjective] [noun] who [verbs]"
  */
 wof.aspects.random.class1 = function() {
-    return "I am a/an " + jsrpg.random.adjective() + " " + jsrpg.random.noun() + " who " + jsrpg.random.verb() + "s";
+    var adjective = jsrpg.random.adjective();
+    var noun = jsrpg.random.noun();
+    var verb = jsrpg.random.verb() + "s";
+    var adverb = "";
+    if (Math.random() <= 0.75) {
+        adverb = jsrpg.random.adverb() + " ";
+    }
+    var union = "a";
+    var fl = adjective.substr(0,1).toLowerCase();
+    if (fl == "a" || fl == "e" || fl == "i" || fl == "o" || fl == "u") {
+        union += "n";
+    }
+    return "I am " + union + " " + adjective + " " + noun + " who " + adverb + verb;
 };
