@@ -648,7 +648,7 @@ wof.aspects.random._friends = [
     "Hidden Crush",
     "I Know Just the Guy",
     "I'm a Member of ...",
-    ""I Get by With a Little Help From my Friends" ~The Beatles",
+    "I Get by With a Little Help From my Friends",
     "Made Man",
     "Manfred, Save Me!",
     "My Old Friend, ...",
