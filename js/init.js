@@ -5,18 +5,7 @@ wof.init = {};
  */
 wof.init.step0 = function() {
 
-    rivets.bind($('#personaje'), {
-        per: wof.creacion.personajeActual,
-        view : wof.view,
-        wof : wof
-    });
-
-    rivets.bind($('#creacion'), {
-        creacion: jsrpg,
-        view : wof.view,
-        wof : wof,
-        base : wof.creacion
-    });
+    //binds de rivets
 
     wof.init.step1();
 };
