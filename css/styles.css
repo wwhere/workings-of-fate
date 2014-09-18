@@ -1,0 +1,98 @@
+.inputHoja {
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 2px;
+    text-align: center;
+}
+
+#personaje {
+    display: flex;
+}
+
+#rasgos {
+}
+
+.parDeRasgos {
+    display: inline-block;
+}
+
+.parDeRasgos label {
+    display: inline-block!important;
+}
+
+.parDeRasgos .divisor {
+    display: inline-block!important;
+}
+
+.parDeRasgos .inputHoja {
+    width: 3em!important;
+    display: inline-block!important;
+}
+
+.seccionHoja {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    display: table;
+    margin: 0.2em;
+    padding: 0.5em;
+}
+
+#creacion {
+    display: flex;
+}
+
+
+#pasiones .inputHoja {
+    width: 2em;
+}
+
+#pasiones label {
+    display: inline;
+}
+
+
+#atributos .inputHoja {
+    width: 3em;
+}
+
+#atributosSecundarios .inputHoja {
+    width: 2em;
+}
+
+.habilidades .inputHoja {
+    width: 2em;
+}
+
+.habilidades label {
+    display: inline-block;
+    width: 6em;
+}
+
+.jsrpg-option-selected {
+    border-color: red;
+    background-color: beige;
+}
+
+.atributo {
+    display: block;
+}
+
+.atributo label {
+    display: inline-block;
+}
+.atributo input {
+    display: inline-block;
+}
+.atributo button {
+    display: inline-block;
+}
+
+.datoBasico {
+    display: block;
+}
+
+.atributoSecundario {
+    display: block;
+}
