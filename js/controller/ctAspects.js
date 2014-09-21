@@ -8,7 +8,12 @@ wof.aspects.random = {};
  */
 wof.aspects.random.class1 = function() {
     var adjective = jsrpg.random.adjective();
-    var noun = jsrpg.random.noun();
+    var noun;
+    if (Math.random() <= 0.5) {
+        noun = jsrpg.random.noun();
+    } else {
+        noun = wof.aspects.random.highConcept();
+    }
     var verb = jsrpg.random.verb() + "s";
     var adverb = "";
     if (Math.random() <= 0.75) {
@@ -180,14 +185,19 @@ wof.aspects.random.highConcept = function() {
 */
 wof.aspects.random._beliefs = [
     "A Good Day to Die",
+    function() {return "A Good Day to " + jsrpg.random.verb();},
     "A Worthy Foe Should Be Respected",
+    function() {return "A worthy " + jsrpg.random.noun() + " Should Be Respected";},
     "Alone, We Stand Together",
     "Always Strike First",
+    function() {return "Always " + jsrpg.random.verb() + " First";},
     "By Fidelity and Military Service",
     "Carrot, Not the Stick",
     "Chivalry Is Not Dead",
     "Conquer or Die!",
+    function() {return jsrpg.random.verb() + " Or Die!";},
     "Contentment Is Preferable to Riches",
+    function() {return jsrpg.random.noun() + " Is Preferable to " + jsrpg.random.noun();},
     "Dare to Fail, for It Is the Only Way to Truly Experience Success.",
     "Desire Is Tamed With a Kiss",
     "Do Your Duty, Happen What May",
@@ -204,9 +214,12 @@ wof.aspects.random._beliefs = [
     "I Am the Land",
     "I Have Killed Men for Less!",
     "I Wait",
+    function() {return "I " + jsrpg.random.verb();},
     "I Want to Know",
+    function() {return "I Want to " + jsrpg.random.verb();},
     "I Want to Make a Difference",
     "I Will Have Vengeance",
+    function() {return "I Will Have the " + jsrpg.random.noun();},
     "I'll Be Back",
     "I'll Make Captain One Day",
     "Imagination Is More Important Than Knowledge.",
@@ -248,10 +261,15 @@ wof.aspects.random._beliefs = [
     "Uphold the Law",
     "Virtue Despises Danger",
     "Wants to Live in Peace",
+    function() {return "Wants to " + jsrpg.random.verb() + " In Peace";},
     "We Must Be the Change We Want to See in the World."
 ];
 wof.aspects.random.belief = function() {
-    return jsrpg.random.randomArray(wof.aspects.random._beliefs);
+    var result = jsrpg.random.randomArray(wof.aspects.random._beliefs);
+    if (typeof(result) === 'function') {
+        result = result.call(this);
+    }
+    return result;
 };
 
 /*
