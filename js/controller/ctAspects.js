@@ -277,6 +277,7 @@ wof.aspects.random.belief = function() {
 */
 wof.aspects.random._trouble = [
     "A Squirrel!",
+    function() {return "A " + jsrpg.random.noun() + "!";},
     "Addicted to Speed",
     "Alone in a Crowd",
     "Always the Bridesmaid, Never the Bride",
@@ -315,12 +316,16 @@ wof.aspects.random._trouble = [
     "Hermit",
     "Home-wrecker",
     "I Can't Get Involved",
+    function() {return "I Can't " + jsrpg.random.verb();},
     "I Don't Trust Me, and You Shouldn't Either",
-    "I Get Paid to to Crazy Stuff",
+    "I Get Paid to do Crazy Stuff",
+    function() {return "I Get Paid to " + jsrpg.random.verb();},
     "I Hate the Outdoors",
+    function() {return "I Hate the " + jsrpg.random.noun() + "s";},
     "I Have No Idea How Much I Don't Know",
     "I Want It Now",
-    "I'd Take a Bullet for Xxx",
+    function() {return "I'd Take a Bullet for a " + jsrpg.random.noun();},
+    "I'd Take a Bullet for [someone]",
     "I'm Too Old for This",
     "Idle Hands are the Devil's Workshop",
     "if One Is Good, Ten Is Better",
@@ -373,6 +378,10 @@ wof.aspects.random._trouble = [
     "Short Fuse",
     "Silver Spoon",
     "Snakes! Why Does It Always Have to Be Snakes!",
+    function() {
+        var nombre = jsrpg.random.noun() + "s";
+        return nombre + "! Why Does It Always Have to Be " + nombre + "!";
+    },
     "Snarl",
     "Something to Prove",
     "Soul of a Killer",
@@ -396,7 +405,11 @@ wof.aspects.random._trouble = [
     "You'll Never Take Me Alive!"
 ];
 wof.aspects.random.trouble = function() {
-    return jsrpg.random.randomArray(wof.aspects.random._trouble);
+    var result = jsrpg.random.randomArray(wof.aspects.random._trouble);
+    if (typeof(result) === 'function') {
+        result = result.call(this);
+    }
+    return result;
 };
 
 /*
