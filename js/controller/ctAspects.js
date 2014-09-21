@@ -171,6 +171,9 @@ wof.aspects.random._highConcepts = [
     "Wizard",
     "Young Hero"
 ];
+wof.aspects.random.highConcept = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._highConcepts);
+};
 
 /*
  Beliefs, Convictions & Mottos
@@ -247,6 +250,9 @@ wof.aspects.random._beliefs = [
     "Wants to Live in Peace",
     "We Must Be the Change We Want to See in the World."
 ];
+wof.aspects.random.belief = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._beliefs);
+};
 
 /*
  Disadvantages / Trouble / Consequences
@@ -371,6 +377,9 @@ wof.aspects.random._trouble = [
     "Work Is a Four Letter Word!",
     "You'll Never Take Me Alive!"
 ];
+wof.aspects.random.trouble = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._trouble);
+};
 
 /*
  Dispositions
@@ -473,6 +482,9 @@ wof.aspects.random._dispositions = [
     "Well-Mannered",
     "Wiseass"
 ];
+wof.aspects.random.dispositions = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._dispositions);
+};
 
 /*
  Expertise, Advantages
@@ -626,6 +638,9 @@ wof.aspects.random._expertise = [
     "You Can't Be Expected to Understand",
     "You’ll Never Get Past Me!"
 ];
+wof.aspects.random.expertise = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._expertise);
+};
 
 /*
  Friends, Family, Help
@@ -664,6 +679,9 @@ wof.aspects.random._friends = [
     "War Buddies",
     "Yeah, I Know Him"
 ];
+wof.aspects.random.friends = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._friends);
+};
 
 /*
  Enemies & Foes
@@ -690,11 +708,13 @@ wof.aspects.random._enemies = [
     "Serendipity, Space Freighter",
     "She's the Fastest Ship on the Rim"
 ];
+wof.aspects.random.enemies = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._enemies);
+};
 
 /*
  Questions
  */
-
 wof.aspects.random._questions = [
     "Death to ...",
     "I Hate ...",
@@ -708,3 +728,25 @@ wof.aspects.random._questions = [
     "Wants to Be ...",
     "...Must Die!"
 ];
+wof.aspects.random.questions = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._questions);
+};
+
+wof.aspects.random.allTable = new jsrpg.Tabla(100,[
+    {v:20,e:wof.aspects.random.class1},
+    {v:30,e:wof.aspects.random.highConcept},
+    {v:40,e:wof.aspects.random.belief},
+    {v:50,e:wof.aspects.random.trouble},
+    {v:60,e:wof.aspects.random.dispositions},
+    {v:70,e:wof.aspects.random.expertise},
+    {v:80,e:wof.aspects.random.friends},
+    {v:90,e:wof.aspects.random.enemies},
+    {v:100,e:wof.aspects.random.questions}
+]);
+
+/**
+ * Generates a random aspect of any kind
+ */
+wof.aspects.random.any = function() {
+    return wof.aspects.random.allTable.tira().call(this);
+};

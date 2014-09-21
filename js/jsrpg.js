@@ -406,6 +406,15 @@ jsrpg.listaElecciones = function() {
 
 jsrpg.random = {};
 
+/**
+ *
+ * @param {Array} inputArray
+ * @returns {*}
+ */
+jsrpg.random.randomArray = function(inputArray) {
+    return inputArray[Math.floor(Math.random() * inputArray.length)];
+};
+
 //region words lists
 jsrpg.random._arrayAdjectives = [
     "aback",
@@ -4012,17 +4021,17 @@ jsrpg.random._arrayAdverbs = [
 //endregion words lists
 
 jsrpg.random.adjective = function() {
-    return jsrpg.random._arrayAdjectives[Math.floor(Math.random() * jsrpg.random._arrayAdjectives.length)];
+    return jsrpg.random.randomArray(jsrpg.random._arrayAdjectives);
 };
 
 jsrpg.random.noun = function() {
-    return jsrpg.random._arrayNouns[Math.floor(Math.random() * jsrpg.random._arrayNouns.length)];
+    return jsrpg.random.randomArray(jsrpg.random._arrayNouns);
 };
 
 jsrpg.random.verb = function() {
-    return jsrpg.random._arrayVerbs[Math.floor(Math.random() * jsrpg.random._arrayVerbs.length)];
+    return jsrpg.random.randomArray(jsrpg.random._arrayVerbs);
 };
 
 jsrpg.random.adverb = function() {
-    return jsrpg.random._arrayAdverbs[Math.floor(Math.random() * jsrpg.random._arrayAdverbs.length)];
+    return jsrpg.random.randomArray(jsrpg.random._arrayAdverbs);
 };

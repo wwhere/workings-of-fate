@@ -10,7 +10,7 @@ wof.init.step0 = function() {
     var salida = $("#aspectList");
 
     for (var i = 0; i < 50; i++) {
-        salida.append($("<div></div>").append(wof.aspects.random.class1()));
+        salida.append($("<div></div>").append(wof.aspects.random.any()));
     }
 
 };
