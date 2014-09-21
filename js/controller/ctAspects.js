@@ -514,7 +514,11 @@ wof.aspects.random._dispositions = [
     "Wiseass"
 ];
 wof.aspects.random.dispositions = function() {
-    return jsrpg.random.randomArray(wof.aspects.random._dispositions);
+    var result = jsrpg.random.randomArray(wof.aspects.random._dispositions);
+    if (typeof(result) === 'function') {
+        result = result.call(this);
+    }
+    return result;
 };
 
 /*
