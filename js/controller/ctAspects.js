@@ -7,24 +7,29 @@ wof.aspects.random = {};
  "I am an [adjective] [noun] who [verbs]"
  */
 wof.aspects.random.class1 = function() {
-    var adjective = jsrpg.random.adjective();
+    var adjective = jsrpg.stringTools.toUpperFirst(jsrpg.random.adjective());
+
     var noun;
     if (Math.random() <= 0.5) {
-        noun = jsrpg.random.noun();
+        noun = jsrpg.stringTools.toUpperFirst(jsrpg.random.nounPersonal());
     } else {
-        noun = wof.aspects.random.highConcept();
+        noun = jsrpg.stringTools.toUpperFirst(wof.aspects.random.highConcept());
     }
-    var verb = jsrpg.random.verb() + "s";
+
+    var verb = jsrpg.stringTools.toUpperFirst(jsrpg.random.verb() + "s");
+
     var adverb = "";
     if (Math.random() <= 0.75) {
-        adverb = jsrpg.random.adverb() + " ";
+        adverb = jsrpg.stringTools.toUpperFirst(jsrpg.random.adverb()) + " ";
     }
-    var union = "a";
+
+    var union = "A";
     var fl = adjective.substr(0,1).toLowerCase();
     if (fl == "a" || fl == "e" || fl == "i" || fl == "o" || fl == "u") {
         union += "n";
     }
-    return "I am " + union + " " + adjective + " " + noun + " who " + adverb + verb;
+
+    return "I Am " + union + " " + adjective + " " + noun + " Who " + adverb + verb;
 };
 
 

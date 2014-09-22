@@ -2739,7 +2739,7 @@ jsrpg.random._arrayNounsPeople = [
     "writer"
 ];
 
-jsrpg.random._arrayVerbs = [
+jsrpg.random._arrayVerbsAny = [
 "abide",
 "accelerate",
 "accept",
@@ -3782,7 +3782,7 @@ jsrpg.random._arrayVerbs = [
 "yell",
 "zip",
 "zoom"
-]; //TODO cambiar en array de verbos transitivos e intransitivos
+];
 
 jsrpg.random._arrayAdverbs = [
     "abnormally",
@@ -4123,14 +4123,29 @@ jsrpg.random.adjective = function() {
     return jsrpg.random.randomArray(jsrpg.random._arrayAdjectives);
 };
 
-jsrpg.random.noun = function() {
-    return jsrpg.random.randomArray(jsrpg.random._arrayNouns);
+jsrpg.random.nounAny = function() {
+    return jsrpg.random.randomArray(jsrpg.random._arrayNounsAny);
+};
+
+jsrpg.random.nounPersonal = function() {
+    return jsrpg.random.randomArray(jsrpg.random._arrayNounsPeople);
 };
 
 jsrpg.random.verb = function() {
-    return jsrpg.random.randomArray(jsrpg.random._arrayVerbs);
+    return jsrpg.random.randomArray(jsrpg.random._arrayVerbsAny);
 };
 
 jsrpg.random.adverb = function() {
     return jsrpg.random.randomArray(jsrpg.random._arrayAdverbs);
+};
+
+jsrpg.stringTools = {};
+
+/**
+ *
+ * @param {string} cadena
+ * @returns {string}
+ */
+jsrpg.stringTools.toUpperFirst = function(cadena) {
+    return cadena.charAt(0).toUpperCase() + cadena.slice(1);
 };
