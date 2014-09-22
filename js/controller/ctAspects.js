@@ -419,6 +419,7 @@ wof.aspects.random._dispositions = [
     "A Fine Line Between Cynicism and Realism",
     "A Fistful of Truth",
     "A Girl in Every Port",
+    function() {return "A " + jsrpg.random.noun() + " In Every Port";},
     "Approachable",
     "Art Is Pleasure",
     "Benevolent Dictator",
@@ -674,7 +675,11 @@ wof.aspects.random._expertise = [
     "You’ll Never Get Past Me!"
 ];
 wof.aspects.random.expertise = function() {
-    return jsrpg.random.randomArray(wof.aspects.random._expertise);
+    var result = jsrpg.random.randomArray(wof.aspects.random._expertise);
+    if (typeof(result) === 'function') {
+        result = result.call(this);
+    }
+    return result;
 };
 
 /*
