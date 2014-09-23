@@ -1,1 +1,41 @@
-// Your custom SCSS should be written here...
+
+@font-face {
+  font-family: 'fate';
+  src: url('../fonts/fate/fate.eot');
+  src: url('../fonts/fate/fate.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/fate/fate.woff2') format('woff2'),
+  url('../fonts/fate/fate.woff') format('woff'),
+  url('../fonts/fate/fate.ttf') format('truetype'),
+  url('../fonts/fate/fate.svg#fate_core_glyphsregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.aspect {
+  font-size: $absurd;
+}
+
+.fontNice {
+  font-family: $font-family;
+}
+
+.fontReadable {
+  font-family: Arial !important;
+}
+
+.textXSmall {
+  font-size: smaller ;
+}
+
+.barraInferior {
+  position: absolute;
+  bottom: 0;
+}
+
+.textJustify {
+  text-align: justify;
+}
+
+.knobLabel {
+  text-align: center;
+}

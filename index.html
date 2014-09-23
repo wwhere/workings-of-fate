@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="stylesheet" href="css/jquery-ui.structure.min.css">
     <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gumby.css">
 
+    <script src="js/lib/modernizr-2.6.2.min.js"></script>
     <script src="js/lib/jquery-2.1.1.min.js"></script>
     <script src="js/lib/jquery-ui.min.js"></script>
+    <script src="js/lib/jquery.mobile.custom.min.js"></script>
+    <script src="js/lib/jquery.knob.js"></script>
 
+    <script src="js/lib/gumby.min.js"></script>
     <script src="js/lib/rivets.min.js"></script>
 
     <script src="js/jsrpg.js"></script>
@@ -25,18 +29,77 @@
 </head>
 
 <body onload="wof.init.step0()">
-<div>
-    <div>Random aspects:</div>
-    <div id="aspectList"></div>
+<div class="row">
+
+    <div class="eight columns">
+        <div id="diales" class="row">
+            <div id="dialNumero" class="four columns">
+
+            </div>
+            <div id="dialCaos" class="four columns">
+
+            </div>
+            <div id="dialLargo" class="four columns">
+
+            </div>
+        </div>
+        <div id="botones" class="row">
+            <div class=" four columns pill-left medium primary btn" onclick="wof.loadAspectsFromButton()">
+                <a href="#" class="fontReadable" id="botonGenerar">Generate other 10!</a>
+            </div>
+            <div class=" four columns rounded medium warning btn" onclick="wof.clearAspects()">
+                <a href="#" class="fontReadable">Clear them</a>
+            </div>
+            <div class=" four columns pill-right medium secondary btn" onclick="wof.cambiaFuente()">
+                <a href="#" class="fontReadable">Switch font</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="fontReadable">Random aspects:</div>
+        </div>
+        <div class="row">
+            <div class="centered ten columns" id="aspectList"></div>
+        </div>
+    </div>
+    <div class="push_one three columns" id="atribution">
+        <div class="row">
+            <div class="twelve columns">
+                <img src="img/Powered_by_fate.png" alt="Powered by FATE logo"/>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="twelve columns fontReadable textXSmall textJustify">
+                This work is based on Fate Core System and Fate Accelerated Edition (found at <a href="http://www.faterpg.com/" target="_blank">http://www.faterpg.com/</a>), products of Evil Hat Productions, LLC, developed, authored, and edited by Leonard Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks, and Rob Donoghue, and licensed for our use under the Creative Commons Attribution 3.0 Unported license (<a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">http://creativecommons.org/licenses/by/3.0/</a>).
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="twelve columns fontReadable textXSmall textJustify">
+                Fate™ is a trademark of Evil Hat Productions, LLC. The Powered by Fate logo is © Evil Hat Productions, LLC and is used with permission.
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="twelve columns fontReadable textXSmall textJustify">
+                The Fate Core font is © Evil Hat Productions, LLC and is used with permission. The Four Actions icons were designed by Jeremy Keller.
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="twelve columns fontReadable textXSmall textJustify">
+                Some aspect lists from <a href="http://wiki.rpg.net/index.php/Aspects_List" target="_blank">RPG.net Wiki</a> used under the license <a href="http://creativecommons.org/licenses/by-sa/2.5/legalcode" target="_blank">creative commons Attribution-ShareAlike 2.5</a>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="twelve columns fontReadable textXSmall textJustify">
+                <a href="http://anthonyterrien.com/knob/" target="_blank">jQuery Knob</a> is ©2012 Anthony Terrien and dual licensed under the MIT or GPL licenses.
+            </div>
+        </div>
+    </div>
 </div>
 
-<div id="attribution">
-    <img src="img/Powered_by_fate.png" alt="Powered by FATE logo"/>
-    <div>This work is based on Fate Core System and Fate Accelerated Edition (found at <a href="http://www.faterpg.com/" target="_blank">http://www.faterpg.com/</a>), products of Evil Hat Productions, LLC, developed, authored, and edited by Leonard Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks, and Rob Donoghue, and licensed for our use under the Creative Commons Attribution 3.0 Unported license (<a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">http://creativecommons.org/licenses/by/3.0/</a>).</div>
-    <div>Fate™ is a trademark of Evil Hat Productions, LLC. The Powered by Fate logo is © Evil Hat Productions, LLC and is used with permission.</div>
-    <div>The Fate Core font is © Evil Hat Productions, LLC and is used with permission. The Four Actions icons were designed by Jeremy Keller.</div>
-    <div>Some aspect lists from <a href="http://wiki.rpg.net/index.php/Aspects_List" target="_blank">RPG.net Wiki</a> used under the license <a href="http://creativecommons.org/licenses/by-sa/2.5/legalcode" target="_blank">creative commons Attribution-ShareAlike 2.5</a> </div>
-</div>
 </body>
 
 

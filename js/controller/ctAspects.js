@@ -192,7 +192,7 @@ wof.aspects.random._beliefs = [
     "A Good Day to Die",
     function() {return "A Good Day to " + jsrpg.random.verb();},
     "A Worthy Foe Should Be Respected",
-    function() {return "A worthy " + jsrpg.random.noun() + " Should Be Respected";},
+    function() {return "A worthy " + jsrpg.random.nounAny() + " Should Be Respected";},
     "Alone, We Stand Together",
     "Always Strike First",
     function() {return "Always " + jsrpg.random.verb() + " First";},
@@ -202,7 +202,7 @@ wof.aspects.random._beliefs = [
     "Conquer or Die!",
     function() {return jsrpg.random.verb() + " Or Die!";},
     "Contentment Is Preferable to Riches",
-    function() {return jsrpg.random.noun() + " Is Preferable to " + jsrpg.random.noun();},
+    function() {return jsrpg.random.nounAny() + " Is Preferable to " + jsrpg.random.nounAny();},
     "Dare to Fail, for It Is the Only Way to Truly Experience Success.",
     "Desire Is Tamed With a Kiss",
     "Do Your Duty, Happen What May",
@@ -224,7 +224,7 @@ wof.aspects.random._beliefs = [
     function() {return "I Want to " + jsrpg.random.verb();},
     "I Want to Make a Difference",
     "I Will Have Vengeance",
-    function() {return "I Will Have the " + jsrpg.random.noun();},
+    function() {return "I Will Have the " + jsrpg.random.nounAny();},
     "I'll Be Back",
     "I'll Make Captain One Day",
     "Imagination Is More Important Than Knowledge.",
@@ -282,7 +282,7 @@ wof.aspects.random.belief = function() {
 */
 wof.aspects.random._trouble = [
     "A Squirrel!",
-    function() {return "A " + jsrpg.random.noun() + "!";},
+    function() {return "A " + jsrpg.random.nounAny() + "!";},
     "Addicted to Speed",
     "Alone in a Crowd",
     "Always the Bridesmaid, Never the Bride",
@@ -326,10 +326,11 @@ wof.aspects.random._trouble = [
     "I Get Paid to do Crazy Stuff",
     function() {return "I Get Paid to " + jsrpg.random.verb();},
     "I Hate the Outdoors",
-    function() {return "I Hate the " + jsrpg.random.noun() + "s";},
+    function() {return "I Hate the " + jsrpg.random.nounAny() + "s";},
+    function() {return "I Hate the " + jsrpg.random.nounPersonal() + "s";},
     "I Have No Idea How Much I Don't Know",
     "I Want It Now",
-    function() {return "I'd Take a Bullet for a " + jsrpg.random.noun();},
+    function() {return "I'd Take a Bullet for a " + jsrpg.random.nounPersonal();},
     "I'd Take a Bullet for [someone]",
     "I'm Too Old for This",
     "Idle Hands are the Devil's Workshop",
@@ -384,7 +385,7 @@ wof.aspects.random._trouble = [
     "Silver Spoon",
     "Snakes! Why Does It Always Have to Be Snakes!",
     function() {
-        var nombre = jsrpg.random.noun() + "s";
+        var nombre = jsrpg.random.nounAny() + "s";
         return nombre + "! Why Does It Always Have to Be " + nombre + "!";
     },
     "Snarl",
@@ -424,7 +425,8 @@ wof.aspects.random._dispositions = [
     "A Fine Line Between Cynicism and Realism",
     "A Fistful of Truth",
     "A Girl in Every Port",
-    function() {return "A " + jsrpg.random.noun() + " In Every Port";},
+    function() {return "A " + jsrpg.random.nounAny() + " In Every Port";},
+    function() {return "A " + jsrpg.random.nounPersonal() + " In Every Port";},
     "Approachable",
     "Art Is Pleasure",
     "Benevolent Dictator",
@@ -741,7 +743,13 @@ wof.aspects.random._enemies = [
     "Rival to...",
     "Sworn Enemy of ...",
     "Vendetta With ...",
-    "Won't Rest Until ...",
+    "Won't Rest Until ..."
+];
+wof.aspects.random.enemies = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._enemies);
+};
+
+wof.aspects.random._gear = [
     "Gear[edit]",
     "Ancient Sword",
     "Deathbed Legacy",
@@ -753,8 +761,8 @@ wof.aspects.random._enemies = [
     "Serendipity, Space Freighter",
     "She's the Fastest Ship on the Rim"
 ];
-wof.aspects.random.enemies = function() {
-    return jsrpg.random.randomArray(wof.aspects.random._enemies);
+wof.aspects.random.gear = function() {
+    return jsrpg.random.randomArray(wof.aspects.random._gear);
 };
 
 /*
@@ -777,7 +785,7 @@ wof.aspects.random.questions = function() {
     return jsrpg.random.randomArray(wof.aspects.random._questions);
 };
 
-wof.aspects.random.allTable = new jsrpg.Tabla(100,[
+wof.aspects.random.allTable = new jsrpg.Tabla(110,[
     {v:20,e:wof.aspects.random.class1},
     {v:30,e:wof.aspects.random.highConcept},
     {v:40,e:wof.aspects.random.belief},
@@ -786,7 +794,8 @@ wof.aspects.random.allTable = new jsrpg.Tabla(100,[
     {v:70,e:wof.aspects.random.expertise},
     {v:80,e:wof.aspects.random.friends},
     {v:90,e:wof.aspects.random.enemies},
-    {v:100,e:wof.aspects.random.questions}
+    {v:100,e:wof.aspects.random.gear},
+    {v:110,e:wof.aspects.random.questions}
 ]);
 
 /**
