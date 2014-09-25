@@ -2,25 +2,44 @@ wof.aspects = {};
 
 wof.aspects.random = {};
 
+wof.aspects.random.chaosLevel = 0.5;
+wof.aspects.random.longFactor = 0.5;
+
 /*
    class 1
  "I am an [adjective] [noun] who [verbs]"
  */
 wof.aspects.random.class1 = function() {
-    var adjective = jsrpg.stringTools.toUpperFirst(jsrpg.random.adjective());
+    var adjective = "";
+    var adjProb = wof.aspects.random.longFactor;
+    while (Math.random() <= adjProb) {
+        adjective += jsrpg.stringTools.toUpperFirst(jsrpg.random.adjective()) + " ";
+        adjProb = adjProb * 0.8;
+    }
 
     var noun;
-    if (Math.random() <= 0.5) {
+    var nounResult = Math.random() + (wof.chaosLevel-0.5)*0.66;
+
+    if (nounResult <= 0.33) {
+        noun = jsrpg.stringTools.toUpperFirst(wof.aspects.random.highConcept());
+    } else if (nounResult <= 0.67) {
         noun = jsrpg.stringTools.toUpperFirst(jsrpg.random.nounPersonal());
     } else {
-        noun = jsrpg.stringTools.toUpperFirst(wof.aspects.random.highConcept());
+        noun = jsrpg.stringTools.toUpperFirst(jsrpg.random.nounAny());
     }
 
     var verb = jsrpg.stringTools.toUpperFirst(jsrpg.random.verb() + "s");
 
     var adverb = "";
-    if (Math.random() <= 0.75) {
-        adverb = jsrpg.stringTools.toUpperFirst(jsrpg.random.adverb()) + " ";
+    var advProb = wof.aspects.random.longFactor;
+    var firstAdverb = true;
+    while (Math.random() <= advProb) {
+        if (!firstAdverb) {
+            adverb += "and "
+        }
+        adverb += jsrpg.stringTools.toUpperFirst(jsrpg.random.adverb()) + " ";
+        advProb = advProb * 0.6;
+        firstAdverb = false;
     }
 
     var union = "A";
@@ -29,7 +48,7 @@ wof.aspects.random.class1 = function() {
         union += "n";
     }
 
-    return "I Am " + union + " " + adjective + " " + noun + " Who " + adverb + verb;
+    return "I Am " + union + " " + adjective + noun + " Who " + adverb + verb;
 };
 
 
@@ -801,6 +820,8 @@ wof.aspects.random.allTable = new jsrpg.Tabla(110,[
 /**
  * Generates a random aspect of any kind
  */
-wof.aspects.random.any = function() {
+wof.aspects.random.any = function(chaosLevel, longFactor) {
+    wof.aspects.random.chaosLevel = chaosLevel;
+    wof.aspects.random.longFactor = longFactor;
     return wof.aspects.random.allTable.tira().call(this);
 };

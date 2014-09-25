@@ -76,14 +76,14 @@ wof.init.step0 = function() {
 };
 
 wof.loadAspectsFromButton = function() {
-    wof.loadAspects(wof.numberToGenerate);
+    wof.loadAspects(wof.numberToGenerate, wof.chaosLevel, wof.longFactor);
 };
 
-wof.loadAspects = function(numberToLoad) {
+wof.loadAspects = function(numberToLoad, chaosLevel, longFactor) {
     var salida = $("#aspectList");
 
     for (var i = 0; i < numberToLoad; i++) {
-        salida.append($("<div></div>").addClass("aspect").addClass(wof.fuente.actual).append(wof.aspects.random.any()));
+        salida.append($("<div></div>").addClass("aspect").addClass(wof.fuente.actual).append(wof.aspects.random.any(chaosLevel, longFactor)));
     }
 };
 
