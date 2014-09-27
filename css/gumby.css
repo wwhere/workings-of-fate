@@ -1697,3 +1697,5 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 .textJustify { text-align: justify; }
 
 .knobLabel { text-align: center; }
+
+.barraTitulo { margin-bottom: 0.5em; }
