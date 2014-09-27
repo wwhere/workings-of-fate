@@ -1690,7 +1690,7 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 .textXSmall { font-size: smaller; }
 
-.textLarge { font-size: 21px; }
+.textLarge { font-size: 2.3em; }
 
 .barraInferior { position: absolute; bottom: 0; }
 
