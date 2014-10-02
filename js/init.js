@@ -8,7 +8,8 @@ wof.fuente = {};
 
 wof.fuente.opciones = {
     fontNice : 'fontNice',
-    fontReadable : 'fontReadable'
+    fontReadable : 'fontReadable',
+    fontNice2 : 'fontNice2'
 };
 
 wof.fuente.actual = wof.fuente.opciones.fontNice;
@@ -89,6 +90,8 @@ wof.loadAspects = function(numberToLoad, chaosLevel, longFactor) {
 
 wof.cambiaFuente = function() {
     if (wof.fuente.actual == wof.fuente.opciones.fontNice) {
+        wof.fuente.cambia(wof.fuente.opciones.fontNice2);
+    } else if (wof.fuente.actual == wof.fuente.opciones.fontNice2) {
         wof.fuente.cambia(wof.fuente.opciones.fontReadable);
     } else {
         wof.fuente.cambia(wof.fuente.opciones.fontNice);

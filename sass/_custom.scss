@@ -11,12 +11,29 @@
   font-style: normal;
 }
 
+
+@font-face {
+  font-family: 'wof';
+  src: url('../fonts/wof/wof.eot');
+  src: url('../fonts/wof/wof.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/wof/wof.woff2') format('woff2'),
+  url('../fonts/wof/wof.woff') format('woff'),
+  url('../fonts/wof/wof.ttf') format('truetype'),
+  url('../fonts/wof/wof.svg#almendra_scregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .aspect {
   font-size: $absurd;
 }
 
 .fontNice {
   font-family: $font-family;
+}
+
+.fontNice2 {
+  font-family: 'wof';
 }
 
 .fontReadable {
@@ -28,7 +45,7 @@
 }
 
 .textLarge {
-  font-size: $reallybig;
+  font-size: 2.3em;
 }
 
 .barraInferior {
@@ -42,4 +59,8 @@
 
 .knobLabel {
   text-align: center;
+}
+
+.barraTitulo {
+  margin-bottom: 0.5em;
 }

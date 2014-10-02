@@ -1678,18 +1678,24 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 @font-face { font-family: 'fate'; src: url("../fonts/fate/fate.eot"); src: url("../fonts/fate/fate.eot?#iefix") format("embedded-opentype"), url("../fonts/fate/fate.woff2") format("woff2"), url("../fonts/fate/fate.woff") format("woff"), url("../fonts/fate/fate.ttf") format("truetype"), url("../fonts/fate/fate.svg#fate_core_glyphsregular") format("svg"); font-weight: normal; font-style: normal; }
 
+@font-face { font-family: 'wof'; src: url("../fonts/wof/wof.eot"); src: url("../fonts/wof/wof.eot?#iefix") format("embedded-opentype"), url("../fonts/wof/wof.woff2") format("woff2"), url("../fonts/wof/wof.woff") format("woff"), url("../fonts/wof/wof.ttf") format("truetype"), url("../fonts/wof/wof.svg#almendra_scregular") format("svg"); font-weight: normal; font-style: normal; }
+
 .aspect { font-size: 22px; }
 
 .fontNice { font-family: "Devonshire"; }
+
+.fontNice2 { font-family: 'wof'; }
 
 .fontReadable { font-family: Arial !important; }
 
 .textXSmall { font-size: smaller; }
 
-.textLarge { font-size: 21px; }
+.textLarge { font-size: 2.3em; }
 
 .barraInferior { position: absolute; bottom: 0; }
 
 .textJustify { text-align: justify; }
 
 .knobLabel { text-align: center; }
+
+.barraTitulo { margin-bottom: 0.5em; }
