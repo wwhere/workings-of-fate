@@ -64,3 +64,20 @@
 .barraTitulo {
   margin-bottom: 0.5em;
 }
+
+.clickableText {
+  color: black;
+  cursor: pointer;
+  &:hover {
+    color:lightblue;
+  }
+}
+
+.currentLink {
+  color: red;
+  cursor: default!important;
+  &:hover {
+    color:red!important;
+  }
+}
+

@@ -28,7 +28,4 @@ wof.World = function() {
 
 
 
-
-
-
 };

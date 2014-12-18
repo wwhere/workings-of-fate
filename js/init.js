@@ -21,6 +21,9 @@ wof.fuente.cambia = function(nuevaFuente) {
 
 
 wof.init.step0 = function() {
+
+    wof.view.switchTo(wof.view.ASPECT_GENERATOR);
+
     var dialCaos = $("#dialCaos");
 
     var dialGeneralRandom = $("<input>").attr("type","text").attr("id","nivelCaos").addClass("dial").attr("value",50);
