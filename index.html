@@ -92,8 +92,33 @@
             </div>
         </div>
         <div id="worldGenerator" class="wofGenerator">
+            <div id="dialesMundo" class="row">
+                <div id="dialNumeroBigIssues" class="four columns">
+
+                </div>
+                <div id="dialCaosMundo" class="four columns">
+
+                </div>
+                <div id="dialNumeroElementos" class="four columns">
+
+                </div>
+            </div>
+            <div id="botones" class="row">
+                <div class=" four columns pill-left medium primary btn" onclick="wof.generateWorld()">
+                    <a href="#" class="fontReadable" id="botonGenerarMundo">Generate a world</a>
+                </div>
+                <div class=" four columns rounded medium warning btn" onclick="wof.clearWorld()">
+                    <a href="#" class="fontReadable">Clear the world</a>
+                </div>
+                <div class=" four columns pill-right medium secondary btn" onclick="wof.cambiaFuente()">
+                    <a href="#" class="fontReadable">Switch font</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="fontReadable">Random world:</div>
+            </div>
+            <div class="row">
+                <div class="centered ten columns" id="worldDescription"></div>
             </div>
         </div>
         <div id="characterGenerator" class="wofGenerator">
