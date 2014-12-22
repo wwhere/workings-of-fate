@@ -1,25 +1,5 @@
 wof.init = {};
 
-wof.numberToGenerate = 10;
-wof.longFactor = 0.5;
-wof.chaosLevel = 0.5;
-
-wof.fuente = {};
-
-wof.fuente.opciones = {
-    fontNice : 'fontNice',
-    fontReadable : 'fontReadable',
-    fontNice2 : 'fontNice2'
-};
-
-wof.fuente.actual = wof.fuente.opciones.fontNice;
-
-wof.fuente.cambia = function(nuevaFuente) {
-    $(".aspect."+wof.fuente.actual).removeClass(wof.fuente.actual).addClass(nuevaFuente);
-    wof.fuente.actual = nuevaFuente;
-};
-
-
 wof.init.step0 = function() {
     var dialCaos = $("#dialCaos");
 
@@ -88,15 +68,6 @@ wof.loadAspects = function(numberToLoad, chaosLevel, longFactor) {
     }
 };
 
-wof.cambiaFuente = function() {
-    if (wof.fuente.actual == wof.fuente.opciones.fontNice) {
-        wof.fuente.cambia(wof.fuente.opciones.fontNice2);
-    } else if (wof.fuente.actual == wof.fuente.opciones.fontNice2) {
-        wof.fuente.cambia(wof.fuente.opciones.fontReadable);
-    } else {
-        wof.fuente.cambia(wof.fuente.opciones.fontNice);
-    }
-};
 
 wof.clearAspects = function() {
     $("#aspectList").empty();
