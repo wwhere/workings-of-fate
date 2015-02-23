@@ -54,40 +54,83 @@
 <body onload="wof.init.step0()">
 <div class="row barraTitulo">
     <img class="six columns" src="img/tituloWof.png">
-    <h1 class="six columns text-center textLarge">
+    <h1 class="two columns text-center textLarge clickableText generatorLink" id="aspectGeneratorLink" onclick="wof.view.switchTo(wof.view.ASPECT_GENERATOR)">
         Aspect Generator
+    </h1>
+    <h1 class="two columns text-center textLarge clickableText generatorLink" id="worldGeneratorLink"  onclick="wof.view.switchTo(wof.view.WORLD_GENERATOR)">
+        World Generator
+    </h1>
+    <h1 class="two columns text-center textLarge clickableText generatorLink" id="characterGeneratorLink"  onclick="wof.view.switchTo(wof.view.CHARACTER_GENERATOR)">
+        Character Generator
     </h1>
 </div>
 <div class="row">
 
     <div class="eight columns">
-        <div id="diales" class="row">
-            <div id="dialNumero" class="four columns">
+        <div  id="aspectGenerator" class="wofGenerator">
+            <div id="diales" class="row">
+                <div id="dialNumero" class="four columns">
 
+                </div>
+                <div id="dialCaos" class="four columns">
+
+                </div>
+                <div id="dialLargo" class="four columns">
+
+                </div>
             </div>
-            <div id="dialCaos" class="four columns">
-
+            <div id="botones" class="row">
+                <div class=" four columns pill-left medium primary btn" onclick="wof.loadAspectsFromButton()">
+                    <a href="#" class="fontReadable" id="botonGenerar">Generate other 10!</a>
+                </div>
+                <div class=" four columns rounded medium warning btn" onclick="wof.clearAspects()">
+                    <a href="#" class="fontReadable">Clear them</a>
+                </div>
+                <div class=" four columns pill-right medium secondary btn" onclick="wof.cambiaFuente()">
+                    <a href="#" class="fontReadable">Switch font</a>
+                </div>
             </div>
-            <div id="dialLargo" class="four columns">
-
+            <div class="row">
+                <div class="fontReadable">Random aspects:</div>
+            </div>
+            <div class="row">
+                <div class="centered ten columns" id="aspectList"></div>
             </div>
         </div>
-        <div id="botones" class="row">
-            <div class=" four columns pill-left medium primary btn" onclick="wof.loadAspectsFromButton()">
-                <a href="#" class="fontReadable" id="botonGenerar">Generate other 10!</a>
+        <div id="worldGenerator" class="wofGenerator">
+            <div id="dialesMundo" class="row">
+                <div id="dialNumeroBigIssues" class="four columns">
+
+                </div>
+                <div id="dialCaosMundo" class="four columns">
+
+                </div>
+                <div id="dialNumeroElementos" class="four columns">
+
+                </div>
             </div>
-            <div class=" four columns rounded medium warning btn" onclick="wof.clearAspects()">
-                <a href="#" class="fontReadable">Clear them</a>
+            <div id="botones" class="row">
+                <div class=" four columns pill-left medium primary btn" onclick="wof.generateWorld()">
+                    <a href="#" class="fontReadable" id="botonGenerarMundo">Generate a world</a>
+                </div>
+                <div class=" four columns rounded medium warning btn" onclick="wof.clearWorld()">
+                    <a href="#" class="fontReadable">Clear the world</a>
+                </div>
+                <div class=" four columns pill-right medium secondary btn" onclick="wof.cambiaFuente()">
+                    <a href="#" class="fontReadable">Switch font</a>
+                </div>
             </div>
-            <div class=" four columns pill-right medium secondary btn" onclick="wof.view.cambiaFuente()">
-                <a href="#" class="fontReadable">Switch font</a>
+            <div class="row">
+                <div class="fontReadable">Random world:</div>
+            </div>
+            <div class="row">
+                <div class="centered ten columns" id="worldDescription"></div>
             </div>
         </div>
-        <div class="row">
-            <div class="fontReadable">Random aspects:</div>
-        </div>
-        <div class="row">
-            <div class="centered ten columns" id="aspectList"></div>
+        <div id="characterGenerator" class="wofGenerator">
+            <div class="row">
+                <div class="fontReadable">Random character:</div>
+            </div>
         </div>
     </div>
     <div class="push_one three columns" id="atribution">

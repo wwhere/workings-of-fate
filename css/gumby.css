@@ -1699,3 +1699,9 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 .knobLabel { text-align: center; }
 
 .barraTitulo { margin-bottom: 0.5em; }
+
+.clickableText { color: black; cursor: pointer; }
+.clickableText:hover { color: lightblue; }
+
+.currentLink { color: red; cursor: default !important; }
+.currentLink:hover { color: red !important; }
