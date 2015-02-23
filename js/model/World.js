@@ -26,6 +26,31 @@ wof.World = function() {
 
     this.groups = [];
 
+    this.numberOfAspects = 5;
+
+    this.numberOfPhases = 3;
+
+    this.skillCap = 4;
+
+    this.skillPyramid = true;
+
+    this.numberOfColumns = 0;
+
+    this.refreshRate = 3;
+
+    this.numberOfInitialStunts = 3;
+
+    this.stressTracks = ["Physical", "Mental"];
+
+    this.defaultNumberOfStressBoxes = 2;
+
+    this.defaultConsequenfceSlots = [2,4,6];
+
+    this.skils = [];
+
+    this.stunts = [];
+
+    this.extras = [];
 
 
 };
