@@ -11,3 +11,16 @@ wof.view.updateEleccion = function(ev, mod) {
 wof.view.cambiaFuente = function() {
     wof.fuente.cambiaFuente();
 };
+
+
+wof.view.ASPECT_GENERATOR = "aspectGenerator";
+wof.view.WORLD_GENERATOR = "worldGenerator";
+wof.view.CHARACTER_GENERATOR = "characterGenerator";
+
+wof.view.switchTo = function(id) {
+    $(".wofGenerator").hide();
+    $("#"+id).show();
+    $(".generatorLink").removeClass("currentLink");
+    $("#"+id+"Link").addClass("currentLink");
+
+};

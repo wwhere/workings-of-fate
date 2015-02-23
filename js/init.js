@@ -110,7 +110,7 @@ wof.init.step0 = function() {
     });
 };
 
-};
+
 
 wof.changeNumberBigIssues = function(valor) {
     valor = Math.floor(valor);
