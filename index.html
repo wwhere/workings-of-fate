@@ -43,9 +43,12 @@
     <script src="js/wof/wof.view.js"></script>
     <script src="js/wof/wof.fuente.js"></script>
 
+    <script src="js/model/World.js"></script>
+
     <script src="js/controller/dispatch.js"></script>
 
     <script src="js/controller/ctAspects.js"></script>
+    <script src="js/controller/ctWorlds.js"></script>
 
     <script src="js/rivets.own.js"></script>
     <script src="js/init.js"></script>
@@ -79,7 +82,7 @@
 
                 </div>
             </div>
-            <div id="botones" class="row">
+            <div id="botonesAspect" class="row">
                 <div class=" four columns pill-left medium primary btn" onclick="wof.loadAspectsFromButton()">
                     <a href="#" class="fontReadable" id="botonGenerar">Generate other 10!</a>
                 </div>
@@ -109,7 +112,7 @@
 
                 </div>
             </div>
-            <div id="botones" class="row">
+            <div id="botonesWorld" class="row">
                 <div class=" four columns pill-left medium primary btn" onclick="wof.generateWorld()">
                     <a href="#" class="fontReadable" id="botonGenerarMundo">Generate a world</a>
                 </div>
@@ -122,6 +125,13 @@
             </div>
             <div class="row">
                 <div class="fontReadable">Random world:</div>
+                <section id="currentWorld">
+                    World name: <input rv-value="currentWorld.name"><br>
+                    World description: <input rv-value="currentWorld.description"><br>
+                    World setting: <input rv-value="currentWorld.setting"><br>
+                    World scale: <input rv-value="currentWorld.scale"><br>
+                    Issues:<textarea rv-value="currentWorld.bigIssues" cols="80" rv-rows="currentWorld.numberOfIssues"></textarea><br>
+                </section>
             </div>
             <div class="row">
                 <div class="centered ten columns" id="worldDescription"></div>
@@ -194,6 +204,10 @@
     </div>
 </div>
 
+
+
+</body>
+<!--
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -204,10 +218,6 @@
     ga('send', 'pageview');
 
 </script>
-
-</body>
-
-
-
+-->
 
 </html>

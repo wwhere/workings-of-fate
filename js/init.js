@@ -92,6 +92,8 @@ wof.init.step0 = function() {
         }
     });
 
+
+
     var dialNumeroElementos = $("#dialNumeroElementos");
 
     var dialNumeroElementosGenerar = $("<input>").attr("type","text").attr("id","numeroElementos").addClass("dial").attr("value",4);
@@ -113,12 +115,14 @@ wof.init.step0 = function() {
 
 
 wof.changeNumberBigIssues = function(valor) {
-    valor = Math.floor(valor);
+    valor = Math.round(valor);
     wof.numberBigIssues = valor;
+    if (wof.currentWorld)
+        wof.currentWorld.numberOfIssues = valor;
 };
 
 wof.changeNumberFacesPlaces = function(valor) {
-    valor = Math.floor(valor);
+    valor = Math.round(valor);
     wof.numberFacesPlaces = valor;
 };
 
@@ -128,6 +132,12 @@ wof.changeWorldChaosLevel = function(valor) {
 
 wof.generateWorld = function() {
     $("#worldDescription").empty();
+    if (wof.bindedWorld)
+        wof.bindedWorld.unbind();
+    wof.currentWorld = new wof.World();
+    wof.currentWorld.randomScale();
+    wof.currentWorld.randomBigIssues();
+    wof.bindedWorld = rivets.bind($('#currentWorld'), {currentWorld: wof.currentWorld});
 };
 
 wof.clearWorld = function() {

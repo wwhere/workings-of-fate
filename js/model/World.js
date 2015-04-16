@@ -10,9 +10,9 @@ wof.World = function() {
     "local","small-scale","vast","epic","large-scale","world spanning","civilization level","galaxy level","dimension level","city","town","nation"
      */
 
-    this.numberOfIssues = 2;
+    this.numberOfIssues = wof.numberBigIssues;
 
-    this.bigIssues = ["",""];
+    this.bigIssues = "";
     /*
      Current
       Impending
@@ -52,5 +52,18 @@ wof.World = function() {
 
     this.extras = [];
 
+    this.randomScale = function() {
+        this.scale = jsrpg.random.randomArray(wof.data.worldScales);
+    };
+
+    this.randomBigIssues = function() {
+        this.bigIssues = "";
+
+        for (var i = 0; i < this.numberOfIssues; i++) {
+            this.bigIssues += wof.worlds.randomBigIssue();
+            if (i+1 < this.numberOfIssues)
+                this.bigIssues += "\n";
+        }
+    };
 
 };
