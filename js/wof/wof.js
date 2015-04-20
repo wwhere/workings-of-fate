@@ -13,6 +13,7 @@ wof.longFactor = 0.5;
 wof.chaosLevel = 0.5;
 
 wof.numberBigIssues = 2;
+wof.numberFacesPlaces = 3;
 
 wof.loadAspectsFromButton = function() {
     wof.loadAspects(wof.numberToGenerate, wof.chaosLevel, wof.longFactor);

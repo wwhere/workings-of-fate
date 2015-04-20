@@ -20,9 +20,9 @@ wof.World = function() {
       issues for elements of the setting
      */
 
-    this.faces = [];
+    this.numberOfFacesAndPlaces = wof.numberFacesPlaces;
 
-    this.places = [];
+    this.facesAndPlaces = "";
 
     this.groups = [];
 
@@ -40,13 +40,15 @@ wof.World = function() {
 
     this.numberOfInitialStunts = 3;
 
-    this.stressTracks = ["Physical", "Mental"];
+    this.numberOfStressTracks = 2;
+
+    this.stressTracks = "Physical Mental";
 
     this.defaultNumberOfStressBoxes = 2;
 
-    this.defaultConsequenfceSlots = [2,4,6];
+    this.defaultConsequenceSlots = "2,4,6";
 
-    this.skils = [];
+    this.skills = [];
 
     this.stunts = [];
 

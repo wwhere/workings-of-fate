@@ -124,6 +124,9 @@ wof.changeNumberBigIssues = function(valor) {
 wof.changeNumberFacesPlaces = function(valor) {
     valor = Math.round(valor);
     wof.numberFacesPlaces = valor;
+    if (wof.currentWorld)
+        wof.currentWorld.numberOfFacesAndPlaces = valor;
+
 };
 
 wof.changeWorldChaosLevel = function(valor) {
