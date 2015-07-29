@@ -28,7 +28,7 @@ wof.aspects.random.class1 = function() {
         noun = jsrpg.stringTools.toUpperFirst(jsrpg.random.nounAny());
     }
 
-    var verb = jsrpg.stringTools.toUpperFirst(jsrpg.random.verb() + "s");
+    var verb = jsrpg.stringTools.toUpperFirst(jsrpg.random.verb(jsrpg.random.verbPersons.THIRD));
 
     var adverb = "";
     var advProb = wof.aspects.random.longFactor;
@@ -56,29 +56,7 @@ wof.aspects.random.class1 = function() {
  "[number] times I've been [past verb transitive]"
  */
 wof.aspects.random.class2 = function() {
-    var initialNumber = jsrpg.stringTools.toUpperFirst(wof.random.numberAny());
 
-    var verb = (jsrpg.random.verb() + "s");
-
-    var adverb = "";
-    var advProb = wof.aspects.random.longFactor;
-    var firstAdverb = true;
-    while (Math.random() <= advProb) {
-        if (!firstAdverb) {
-            adverb += "and "
-        }
-        adverb += jsrpg.stringTools.toUpperFirst(jsrpg.random.adverb()) + " ";
-        advProb = advProb * 0.6;
-        firstAdverb = false;
-    }
-
-    var union = "A";
-    var fl = adjective.substr(0,1).toLowerCase();
-    if (fl == "a" || fl == "e" || fl == "i" || fl == "o" || fl == "u") {
-        union += "n";
-    }
-
-    return "I Am " + union + " " + adjective + noun + " Who " + adverb + verb;
 };
 
 /*
@@ -238,17 +216,19 @@ wof.aspects.random.highConcept = function() {
 */
 wof.aspects.random._beliefs = [
     "A Good Day to Die",
-    function() {return "A Good Day to " + jsrpg.random.verb();},
+    function() {return "A Good Day " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST,jsrpg.random.verbTimes.INFINITIVE);},
     "A Worthy Foe Should Be Respected",
     function() {return "A worthy " + jsrpg.random.nounAny() + " Should Be Respected";},
     "Alone, We Stand Together",
     "Always Strike First",
-    function() {return "Always " + jsrpg.random.verb() + " First";},
+    function() {return "Always " + jsrpg.random.verb(jsrpg.random.verbPersons.SECOND,jsrpg.random.verbTimes.IMPERATIVE,false) + " First";},
+    function() {return "Never " + jsrpg.random.verb(jsrpg.random.verbPersons.SECOND,jsrpg.random.verbTimes.IMPERATIVE,false) + " First";},
+    function() {return "Never " + jsrpg.random.verb(jsrpg.random.verbPersons.SECOND,jsrpg.random.verbTimes.IMPERATIVE,false) + " Last";},
     "By Fidelity and Military Service",
     "Carrot, Not the Stick",
     "Chivalry Is Not Dead",
     "Conquer or Die!",
-    function() {return jsrpg.random.verb() + " Or Die!";},
+    function() {return jsrpg.random.verb(jsrpg.random.verbPersons.SECOND,jsrpg.random.verbTimes.IMPERATIVE) + " Or Die!";},
     "Contentment Is Preferable to Riches",
     function() {return jsrpg.random.nounAny() + " Is Preferable to " + jsrpg.random.nounAny();},
     "Dare to Fail, for It Is the Only Way to Truly Experience Success.",
@@ -267,9 +247,16 @@ wof.aspects.random._beliefs = [
     "I Am the Land",
     "I Have Killed Men for Less!",
     "I Wait",
-    function() {return "I " + jsrpg.random.verb();},
+    function() {return "I " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST);},
+    function() {return "You " + jsrpg.random.verb(jsrpg.random.verbPersons.SECOND);},
+    function() {return "He " + jsrpg.random.verb(jsrpg.random.verbPersons.THIRD);},
+    function() {return "She " + jsrpg.random.verb(jsrpg.random.verbPersons.THIRD);},
+    function() {return "It " + jsrpg.random.verb(jsrpg.random.verbPersons.THIRD);},
+    function() {return "We " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST_PLURAL);},
+    function() {return "You " + jsrpg.random.verb(jsrpg.random.verbPersons.SECOND_PLURAL);},
+    function() {return "They " + jsrpg.random.verb(jsrpg.random.verbPersons.THIRD_PLURAL);},
     "I Want to Know",
-    function() {return "I Want to " + jsrpg.random.verb();},
+    function() {return "I Want " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST,jsrpg.random.verbTimes.INFINITIVE);},
     "I Want to Make a Difference",
     "I Will Have Vengeance",
     function() {return "I Will Have the " + jsrpg.random.nounAny();},
@@ -314,7 +301,7 @@ wof.aspects.random._beliefs = [
     "Uphold the Law",
     "Virtue Despises Danger",
     "Wants to Live in Peace",
-    function() {return "Wants to " + jsrpg.random.verb() + " In Peace";},
+    function() {return "Wants " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST,jsrpg.random.verbTimes.INFINITIVE) + " In Peace";},
     "We Must Be the Change We Want to See in the World."
 ];
 wof.aspects.random.belief = function() {
@@ -369,10 +356,10 @@ wof.aspects.random._trouble = [
     "Hermit",
     "Home-wrecker",
     "I Can't Get Involved",
-    function() {return "I Can't " + jsrpg.random.verb();},
+    function() {return "I Can't " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST,jsrpg.random.verbTimes.PRESENT,false);},
     "I Don't Trust Me, and You Shouldn't Either",
     "I Get Paid to do Crazy Stuff",
-    function() {return "I Get Paid to " + jsrpg.random.verb();},
+    function() {return "I Get Paid " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST,jsrpg.random.verbTimes.INFINITIVE);},
     "I Hate the Outdoors",
     function() {return "I Hate the " + jsrpg.random.nounAny() + "s";},
     function() {return "I Hate the " + jsrpg.random.nounPersonal() + "s";},

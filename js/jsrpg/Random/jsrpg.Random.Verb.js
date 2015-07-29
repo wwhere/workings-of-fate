@@ -16,9 +16,28 @@ jsrpg.random.verbTimes.CONDITIONAL_PERFECT = "CONDITIONAL_PERFECT";  //I would h
 jsrpg.random.verbTimes.CONDITIONAL_PRESENT_PROGRESSIVE = "CONDITIONAL_PRESENT_PROGRESSIVE";  //I would be walking
 jsrpg.random.verbTimes.CONDITIONAL_PERFECT_PROGRESSIVE = "CONDITIONAL_PERFECT_PROGRESSIVE";  //I would have been walking
 jsrpg.random.verbTimes.PRESENT_SUBJUNCTIVE = "PRESENT_SUBJUNCTIVE";  //I walk
-jsrpg.random.verbTimes.PAST_SUBJUNCTIVE = "PAST_SUBJUNCTIVE";  //I walked
-jsrpg.random.verbTimes.PAST_PERFECT_SUBJUNCTIVE = "PAST_PERFECT_SUBJUNCTIVE";  //I had walked
 jsrpg.random.verbTimes.IMPERATIVE = "IMPERATIVE";  //you walk
+jsrpg.random.verbTimes.INFINITIVE = "INFINITIVE";  //you walk
+jsrpg.random.verbTimes._arrayVerbTimes = [
+    jsrpg.random.verbTimes.PRESENT,
+    jsrpg.random.verbTimes.PRESENT_CONTINUOUS,
+    jsrpg.random.verbTimes.PAST_SIMPLE,
+    jsrpg.random.verbTimes.PAST_CONTINUOUS,
+    jsrpg.random.verbTimes.PRESENT_PERFECT,
+    jsrpg.random.verbTimes.PRESENT_PERFECT_CONTINUOUS,
+    jsrpg.random.verbTimes.PAST_PERFECT,
+    jsrpg.random.verbTimes.PAST_PERFECT_CONTINUOUS,
+    jsrpg.random.verbTimes.FUTURE,
+    jsrpg.random.verbTimes.FUTURE_CONTINUOUS,
+    jsrpg.random.verbTimes.FUTURE_PERFECT,
+    jsrpg.random.verbTimes.FUTURE_PERFECT_CONTINUOUS,
+    jsrpg.random.verbTimes.CONDITIONAL_PRESENT,
+    jsrpg.random.verbTimes.CONDITIONAL_PERFECT,
+    jsrpg.random.verbTimes.CONDITIONAL_PRESENT_PROGRESSIVE,
+    jsrpg.random.verbTimes.CONDITIONAL_PERFECT_PROGRESSIVE,
+    jsrpg.random.verbTimes.PRESENT_SUBJUNCTIVE,
+    jsrpg.random.verbTimes.IMPERATIVE
+];
 
 jsrpg.random.verbPersons = {};
 jsrpg.random.verbPersons.FIRST = "FIRST_PERSON"; //I
@@ -27,12 +46,21 @@ jsrpg.random.verbPersons.THIRD = "THIRD_PERSON"; //he she it
 jsrpg.random.verbPersons.FIRST_PLURAL = "FIRST_PERSON_PLURAL"; //we
 jsrpg.random.verbPersons.SECOND_PLURAL = "SECOND_PERSON_PLURAL"; //you
 jsrpg.random.verbPersons.THIRD_PLURAL = "THIRD_PERSON_PLURAL"; //they
+jsrpg.random.verbPersons._arrayVerbPersons = [
+    jsrpg.random.verbPersons.FIRST,
+    jsrpg.random.verbPersons.SECOND,
+    jsrpg.random.verbPersons.THIRD,
+    jsrpg.random.verbPersons.FIRST_PLURAL,
+    jsrpg.random.verbPersons.SECOND_PLURAL,
+    jsrpg.random.verbPersons.THIRD_PLURAL
+];
 
 /**
  *
  * @param {string} infinitive
  * @param {string}  ingForm
  * @param {string} participle
+ * @param {string} [simplePast=participle]
  */
 jsrpg.random.VerbClass = function(infinitive, ingForm, participle, simplePast) {
     /**
@@ -63,9 +91,13 @@ jsrpg.random.VerbClass = function(infinitive, ingForm, participle, simplePast) {
      *
      * @returns {string}
      */
-    this.verb = function() {
+    this.verb = function () {
         return this.infinitive;
     };
+};
+
+jsrpg.random.VerbClass.prototype = {
+    constructor : jsrpg.random.VerbClass,
 
     /**
      *
@@ -73,7 +105,7 @@ jsrpg.random.VerbClass = function(infinitive, ingForm, participle, simplePast) {
      * @param {string} person From jsrpg.random.verbPersons
      * @returns {string} Only the verb form, without the pronoun
      */
-    this.conjugate = function(time, person) {
+    conjugate : function(time, person) {
         var conjugated = "";
         var t = jsrpg.random.verbTimes;
         var p = jsrpg.random.verbPersons;
@@ -168,15 +200,122 @@ jsrpg.random.VerbClass = function(infinitive, ingForm, participle, simplePast) {
             case t.PRESENT_SUBJUNCTIVE:
                 conjugated = this.infinitive;
                 break;
-            case t.PAST_SUBJUNCTIVE:
-                conjugated = this.participle;
-                break;
-            case t.PAST_PERFECT_SUBJUNCTIVE:
-                conjugated = "had " + this.participle;
-                break;
             case t.IMPERATIVE:
                 conjugated = this.infinitive;
                 break;
+            case t.INFINITIVE:
+                conjugated = "to " + this.infinitive;
+                break;
+            default:
+                conjugated = this.infinitive;
+        }
+        return conjugated;
+    },
+
+    /**
+     *
+     * @param {string} time From jsrpg.random.verbTimes
+     * @param {string} person From jsrpg.random.verbPersons
+     * @returns {string} Only the verb form, without the pronoun
+     */
+    conjugateNegation : function(time, person) {
+        var conjugated = "";
+        var t = jsrpg.random.verbTimes;
+        var p = jsrpg.random.verbPersons;
+
+        switch (time) {
+            case t.PRESENT:
+                switch (person) {
+                    case p.THIRD:
+                        conjugated = "doesn't " + this.infinitive;
+                        break;
+                    default:
+                        conjugated = "don't " + this.infinitive;
+                }
+                break;
+            case t.PRESENT_CONTINUOUS:
+                switch (person) {
+                    case p.FIRST:
+                        conjugated = "am not " + this.ingForm;
+                        break;
+                    case p.THIRD:
+                        conjugated = "isn't " + this.ingForm;
+                        break;
+                    default :
+                        conjugated = "aren't " + this.ingForm;
+                }
+                break;
+            case t.PAST_SIMPLE:
+                conjugated = "didn't " + this.infinitive;
+                break;
+            case t.PAST_CONTINUOUS:
+                switch (person) {
+                    case p.FIRST:
+                    case p.THIRD:
+                        conjugated = "wasn't " + this.ingForm;
+                        break;
+                    default:
+                        conjugated = "weren't " + this.ingForm;
+                }
+                break;
+            case t.PRESENT_PERFECT:
+                switch (person) {
+                    case p.THIRD:
+                        conjugated = "hasn't " + this.participle;
+                        break;
+                    default:
+                        conjugated = "haven't " + this.participle;
+                }
+                break;
+            case t.PRESENT_PERFECT_CONTINUOUS:
+                switch (person) {
+                    case p.THIRD:
+                        conjugated = "hasn't been " + this.ingForm;
+                        break;
+                    default:
+                        conjugated = "haven't been " + this.ingForm;
+                }
+                break;
+            case t.PAST_PERFECT:
+                conjugated = "didn't have " + this.participle;
+                break;
+            case t.PAST_PERFECT_CONTINUOUS:
+                conjugated = "didn't have been " + this.ingForm;
+                break;
+            case t.FUTURE:
+                conjugated = "won't " + this.infinitive;
+                break;
+            case t.FUTURE_CONTINUOUS:
+                conjugated = "won't be " + this.ingForm;
+                break;
+            case t.FUTURE_PERFECT:
+                conjugated = "won't have " + this.participle;
+                break;
+            case t.FUTURE_PERFECT_CONTINUOUS:
+                conjugated = "won't have been " + this.ingForm;
+                break;
+            case t.CONDITIONAL_PRESENT:
+                conjugated = "wouldn't " + this.infinitive;
+                break;
+            case t.CONDITIONAL_PERFECT:
+                conjugated = "wouldn't have " + this.participle;
+                break;
+            case t.CONDITIONAL_PRESENT_PROGRESSIVE:
+                conjugated = "wouldn't be " + this.ingForm;
+                break;
+            case t.CONDITIONAL_PERFECT_PROGRESSIVE:
+                conjugated = "wouldn't have been " + this.ingForm;
+                break;
+            case t.PRESENT_SUBJUNCTIVE:
+                conjugated = "not " + this.infinitive;
+                break;
+            case t.IMPERATIVE:
+                conjugated = "don't " + this.infinitive;
+                break;
+            case t.INFINITIVE:
+                conjugated = "not to " + this.infinitive;
+                break;
+
             default:
                 conjugated = this.infinitive;
         }
@@ -1228,7 +1367,29 @@ jsrpg.random._arrayVerbsAny = [
     new jsrpg.random.VerbClass("zoom","zooming","zoomed")
 ];
 
-jsrpg.random.verb = function(transitive, time) {
-    return jsrpg.random.randomArray(jsrpg.random._arrayVerbsAny);
+/**
+ *
+ * @param {string} [person] From jsrpg.random.verbPersons
+ * @param {string} [time] jsrpg.random.verbTimes
+ * @param {boolean} [negative]
+ * @returns {string}
+ */
+jsrpg.random.verb = function(person, time, negative) {
+    var conjugatedVerb = "";
+    if (!person) {
+        person = jsrpg.random.randomArray(jsrpg.random.verbPersons._arrayVerbPersons);
+    }
+    if (!time) {
+        time = jsrpg.random.randomArray(jsrpg.random.verbTimes._arrayVerbTimes);
+    }
+    if (negative === 'undefined') {
+        negative = (Math.random() >= 0.3);
+    }
+    if (negative) {
+        conjugatedVerb = jsrpg.random.randomArray(jsrpg.random._arrayVerbsAny).conjugateNegation(time,person);
+    } else {
+        conjugatedVerb = jsrpg.random.randomArray(jsrpg.random._arrayVerbsAny).conjugate(time,person);
+    }
+    return conjugatedVerb;
 };
 
