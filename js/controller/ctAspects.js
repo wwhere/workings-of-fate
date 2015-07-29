@@ -51,6 +51,35 @@ wof.aspects.random.class1 = function() {
     return "I Am " + union + " " + adjective + noun + " Who " + adverb + verb;
 };
 
+/*
+ class 2
+ "[number] times I've been [past verb transitive]"
+ */
+wof.aspects.random.class2 = function() {
+    var initialNumber = jsrpg.stringTools.toUpperFirst(wof.random.numberAny());
+
+    var verb = (jsrpg.random.verb() + "s");
+
+    var adverb = "";
+    var advProb = wof.aspects.random.longFactor;
+    var firstAdverb = true;
+    while (Math.random() <= advProb) {
+        if (!firstAdverb) {
+            adverb += "and "
+        }
+        adverb += jsrpg.stringTools.toUpperFirst(jsrpg.random.adverb()) + " ";
+        advProb = advProb * 0.6;
+        firstAdverb = false;
+    }
+
+    var union = "A";
+    var fl = adjective.substr(0,1).toLowerCase();
+    if (fl == "a" || fl == "e" || fl == "i" || fl == "o" || fl == "u") {
+        union += "n";
+    }
+
+    return "I Am " + union + " " + adjective + noun + " Who " + adverb + verb;
+};
 
 /*
  Archetypes / High Concepts
