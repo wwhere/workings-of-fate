@@ -33,7 +33,7 @@ jsrpg.random._arrayHighNumbers = [
 jsrpg.random._arrayRandomNumbers = [
     jsrpg.random._arrayNumbersTo20,
     jsrpg.random._arrayHighNumbers
-]
+];
 
 jsrpg.random.numberTo20 = function() {
     return jsrpg.random.randomArray(jsrpg.random._arrayNumbersTo20);
