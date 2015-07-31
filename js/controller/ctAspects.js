@@ -56,7 +56,7 @@ wof.aspects.random.class1 = function() {
  "[number] times I've been [past verb transitive]"
  */
 wof.aspects.random.class2 = function() {
-    return jsrpg.stringTools.toUpperFirst(jsrpg.random.numberAny()) + " times I've been " + jsrpg.random.verb(jsrpg.random.verbTimes.PAST_SIMPLE);
+    return jsrpg.stringTools.toUpperFirst(jsrpg.random.numberAny()) + " times I've been " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST,jsrpg.random.verbTimes.PAST_SIMPLE);
 };
 
 /*
