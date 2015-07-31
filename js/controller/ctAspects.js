@@ -56,7 +56,7 @@ wof.aspects.random.class1 = function() {
  "[number] times I've been [past verb transitive]"
  */
 wof.aspects.random.class2 = function() {
-
+    return jsrpg.stringTools.toUpperFirst(jsrpg.random.numberAny()) + " times I've been " + jsrpg.random.verb(jsrpg.random.verbTimes.PAST_SIMPLE);
 };
 
 /*
@@ -835,10 +835,11 @@ wof.aspects.random.questions = function() {
 
 wof.aspects.random.allTable = new jsrpg.Tabla(110,[
     {v:20,e:wof.aspects.random.class1},
-    {v:30,e:wof.aspects.random.class3},
-    {v:35,e:wof.aspects.random.highConcept},
-    {v:40,e:wof.aspects.random.belief},
-    {v:50,e:wof.aspects.random.trouble},
+    {v:30,e:wof.aspects.random.class2},
+    {v:40,e:wof.aspects.random.class3},
+    {v:45,e:wof.aspects.random.highConcept},
+    {v:50,e:wof.aspects.random.belief},
+    {v:55,e:wof.aspects.random.trouble},
     {v:60,e:wof.aspects.random.dispositions},
     {v:70,e:wof.aspects.random.expertise},
     {v:80,e:wof.aspects.random.friends},

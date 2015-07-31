@@ -627,9 +627,11 @@ jsrpg.random.nounPersonal = function(inPlural) {
 
     if (inPlural) {
         if (noun.charAt(noun.length-1) == "s") {
-            noun += "es";
+            noun = noun + "es";
+        } if (noun.charAt(noun.length-1) == "y") {
+            noun = noun + "ies";
         } else {
-            noun += "s";
+            noun = noun + "s";
         }
     }
 
