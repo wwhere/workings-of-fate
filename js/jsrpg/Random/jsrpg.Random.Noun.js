@@ -617,8 +617,23 @@ jsrpg.random.nounAny = function() {
     return jsrpg.random.randomArray(jsrpg.random._arrayNounsAny);
 };
 
-jsrpg.random.nounPersonal = function() {
-    return jsrpg.random.randomArray(jsrpg.random._arrayNounsPeople);
+/**
+ *
+ * @param {boolean} inPlural
+ * @returns {string}
+ */
+jsrpg.random.nounPersonal = function(inPlural) {
+    var noun = jsrpg.random.randomArray(jsrpg.random._arrayNounsPeople);
+
+    if (inPlural) {
+        if (noun.charAt(noun.length-1) == "s") {
+            noun += "es";
+        } else {
+            noun += "s";
+        }
+    }
+
+    return noun;
 };
 
 jsrpg.random.nounColor = function() {

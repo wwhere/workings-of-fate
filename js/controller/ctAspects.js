@@ -60,6 +60,19 @@ wof.aspects.random.class2 = function() {
 };
 
 /*
+ class 3
+ "There are two kinds of [plural noun for persons]: those who [verb] and those who [verb]"
+ */
+wof.aspects.random.class3 = function() {
+    var noun = jsrpg.random.nounPersonal(true);
+    var verb1 = jsrpg.random.verb(jsrpg.random.verbPersons.THIRD_PLURAL);
+    var verb2 = jsrpg.random.verb(jsrpg.random.verbPersons.THIRD_PLURAL);
+
+    return "There are two kinds of " + noun + ": Those who " + verb1 + " and those who " + verb2;
+};
+
+
+/*
  Archetypes / High Concepts
  */
 wof.aspects.random._highConcepts = [
@@ -362,7 +375,7 @@ wof.aspects.random._trouble = [
     function() {return "I Get Paid " + jsrpg.random.verb(jsrpg.random.verbPersons.FIRST,jsrpg.random.verbTimes.INFINITIVE);},
     "I Hate the Outdoors",
     function() {return "I Hate the " + jsrpg.random.nounAny() + "s";},
-    function() {return "I Hate the " + jsrpg.random.nounPersonal() + "s";},
+    function() {return "I Hate the " + jsrpg.random.nounPersonal(true);},
     "I Have No Idea How Much I Don't Know",
     "I Want It Now",
     function() {return "I'd Take a Bullet for a " + jsrpg.random.nounPersonal();},
@@ -822,7 +835,8 @@ wof.aspects.random.questions = function() {
 
 wof.aspects.random.allTable = new jsrpg.Tabla(110,[
     {v:20,e:wof.aspects.random.class1},
-    {v:30,e:wof.aspects.random.highConcept},
+    {v:30,e:wof.aspects.random.class3},
+    {v:35,e:wof.aspects.random.highConcept},
     {v:40,e:wof.aspects.random.belief},
     {v:50,e:wof.aspects.random.trouble},
     {v:60,e:wof.aspects.random.dispositions},
